@@ -30,23 +30,33 @@
   <script>
     $(document).ready(function(){
       
-      let showRacks = function(racks){
+      let newGame = function(racks){
         $("#twistedtext").html('');
-        $("#answer").html('');
         $("#grabanother").html('<i class="fas fa-sync"></i>');
         racks.map(rack=>{
           $("#twistedtext").append(`${rack.rack}`);
-          $("#answer").append(`${rack.words}`);
         });
+      }
+      
+      let guesswords = function(racks){
+        
       }
       
       $("#grabanother").on("click", function(){
         $.ajax({
             method: "GET",
-            url: "api.php",
-            success: data=>{ showRacks(data)}
-        });
+            url: "api.php?button=grabanother",
+            success: data=>{ NewGame(data)}
+        })
       });
+      $("#guess").on("change", function(){
+        let guess = document.getElementById("guess").value.toUpperCase();
+        let twistedtext = document.getElementById("twistedtext").innerHTML;
+        $.ajax({
+           method: "GET",
+           url: "api.php",
+           success: words=>{ guesswords(words)}
+        })
     });
   </script>
 </html>
