@@ -32,8 +32,9 @@
       
       let showRacks = function(racks){
         $("#twistedtext").html('');
+         $("#grabanother").html('<i class="fas fa-sync"></i>');
         racks.map(rack=>{
-          $("#twisted").append(`${rack.rack}`);
+          $("#twistedtext").append(`${rack.rack}`);
         });
       }
       
