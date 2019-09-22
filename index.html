@@ -19,27 +19,35 @@
       <br>
       <div class="jumbotron">
         <h1 class="display-4 text-center"><span id = "twistedtext"></span>&nbsp;<button id="grabanother" type="button" class="btn btn-sm">Start Game!</button></h1>
-        <p class="text-center">Make your guess: <input id="guess"></p>
+        <p class="text-center">Make your guess: <input id="guess hidden"></p>
       </div>
-        <p id="answer">
-        </p>
+        <ul id="answer">
+        </ul>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
   <script>
     $(document).ready(function(){
+      let words = [];
+      $("#grabanother").on("click", function(evt){
+          $("input").toggleClass("hidden");
+      });
       
       let newGame = function(racks){
         $("#twistedtext").html('');
+        $("#answer").html('');
         $("#grabanother").html('<i class="fas fa-sync"></i>');
         racks.map(rack=>{
           $("#twistedtext").append(`${rack.rack}`);
         });
       }
       
-      let guesswords = function(racks){
-        
+      let guessWords = function(racks){
+        if(!words.includes(game["guess"]) && game["guess"] != NULL){
+           words.push(game["guess"]);
+           $("#answer").append(`<li>game["guess"]</li>`);
+        }
       }
       
       $("#grabanother").on("click", function(){
@@ -54,8 +62,8 @@
         let twistedtext = document.getElementById("twistedtext").innerHTML;
         $.ajax({
            method: "GET",
-           url: "api.php",
-           success: words=>{ guesswords(words)}
+           url: "api.php?guess=" + guess + "&twistedtext=" + twistedtext,
+           success: game=>{ guessWords(game)}
         })
     });
   </script>
