@@ -34,8 +34,7 @@ $(document).ready(function(){
 	 let word_arrLength = 0;
 	 let word_l = 0;
 	  
-	function newRack(rack)
-	{
+	function newRack(rack){
 	    //Display new rack
 	    let hidden = "";
 	    score = 0;
@@ -51,36 +50,31 @@ $(document).ready(function(){
 				hidden = hidden + line + "<br>";
 		}
 		
-		document.getElementById("words").innerHTML = hidden;
-		document.getElementById("twistedtext").innerHTML = rack["rack"];
+		$("#words").innerHTML = hidden;
+		$("#twistedtext").innerHTML = rack["rack"];
 	}
 	
-	function displayCheck(grade)
-	{
+	function displayCheck(grade){
 	    //Load new words
 	   let hidden = "";
 	   //if correct word wasnt guessed yet
-	   if(!c_guesses.includes(grade["guess"]) && grade["result"] == "correct")
-	   {
+	   if(!c_guesses.includes(grade["guess"]) && grade["result"] == "correct"){
 	       c_guesses.push(grade["guess"]);
 	       score++;
 	       //print correct words
-	       for(var i = 0; i < c_guesses.length; i++)
-	       {
+	       for(var i = 0; i < c_guesses.length; i++){
 	           hidden = hidden + c_guesses[i] + "<br>";
 	       }
 	       //determine number of words left to print
-	       for(var i = 0; i < word_arrLength-score; i++) 
-		   {    
+	       for(var i = 0; i < word_arrLength-score; i++){    
 				let star = "*";
 				let line = star.repeat(word_l);
 				hidden = hidden + line + "<br>";
-		   }
+	       }
 		
-	       document.getElementById("words").innerHTML = hidden;
+	       $("#words").innerHTML = hidden;
 	       
-	       if(score==word_arrLength)
-	       {
+	       if(score==word_arrLength){
 	           alert("You WIN!");
 	       }
 	   }
@@ -90,8 +84,7 @@ $(document).ready(function(){
 	   }
 	}
 	
-      $("#newRack").on("click", function()
-      {
+      $("#newRack").on("click", function(){
         $.ajax({
             method: "GET",
             url: "api.php?button=newRack",
@@ -100,11 +93,9 @@ $(document).ready(function(){
         });
       });
 	  
-	  $("#guess").on("change", function()
-      {
-        let guess = document.getElementById("guess").value.toUpperCase();
-        let rack = document.getElementById("twistedtext").innerHTML;
-        
+      $("#guess").on("change", function(){
+        let guess = $("#guess").value.toUpperCase();
+        let rack = $("#twistedtext").innerHTML;
         $.ajax({
             method: "GET",
             url: "api.php?button=check&guess=" + guess + "&rack="+ rack,
