@@ -43,7 +43,7 @@
         });
       }
       
-      let guessWords = function(racks){
+      let guessWords = function(game){
         if(!words.includes(game["guess"]) && game["guess"] != NULL){
            words.push(game["guess"]);
            $("#answer").append(`<li>game["guess"]</li>`);
