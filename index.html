@@ -29,41 +29,90 @@
   </body>
   <script>
     $(document).ready(function(){
-      let words = [];
-      
-      function newGame(racks){
-        $("#twistedtext").html('');
-        $("#answer").html('');
-        $("#grabanother").html('<i class="fas fa-sync"></i>');
-        racks.map(rack=>{
-          $("#twistedtext").append(`${rack.rack}`);
-        });
-      }
-      
-      function guessWords(game){
-        if(!words.includes(game["guess"]) && game["guess"] != NULL){
-           words.push(game["guess"]);
-           $("#answer").append(`<li>game["guess"]</li>`);
-        }
-      }
-      
-      $("#grabanother").on("click", function(){
+let score = 0;
+     let c_guesses = [];
+	 let word_arrLength = 0;
+	 let word_l = 0;
+	  
+	function newRack(rack)
+	{
+	    //Display new rack
+	    let hidden = "";
+	    score = 0;
+        c_guesses = [];
+	    alert(rack["words"]);
+	    var word_arr = rack["words"].split("@@");
+	    word_l = word_arr[0].length;
+	    word_arrLength = word_arr.length;
+		for(var i = 0; i < word_arr.length; i++) 
+		{
+				let star = "*";
+				let line = star.repeat(word_arr[i].length);
+				hidden = hidden + line + "<br>";
+		}
+		
+		document.getElementById("words").innerHTML = hidden;
+		document.getElementById("rack").innerHTML = rack["rack"];
+	}
+	
+	function displayCheck(grade)
+	{
+	    //Load new words
+	   let hidden = "";
+	   //if correct word wasnt guessed yet
+	   if(!c_guesses.includes(grade["guess"]) && grade["result"] == "correct")
+	   {
+	       c_guesses.push(grade["guess"]);
+	       score++;
+	       //print correct words
+	       for(var i = 0; i < c_guesses.length; i++)
+	       {
+	           hidden = hidden + c_guesses[i] + "<br>";
+	       }
+	       //determine number of words left to print
+	       for(var i = 0; i < word_arrLength-score; i++) 
+		   {    
+				let star = "*";
+				let line = star.repeat(word_l);
+				hidden = hidden + line + "<br>";
+		   }
+		
+	       document.getElementById("words").innerHTML = hidden;
+	       
+	       if(score==word_arrLength)
+	       {
+	           alert("You WIN!");
+	       }
+	   }
+	   else
+	   {
+	       alert("Incorrect or already guessed.");
+	   }
+	}
+	
+      $("#newRack").on("click", function()
+      {
         $.ajax({
             method: "GET",
-            url: "api.php?button=grabanother",
+            url: "api.php?button=newRack",
             dataType: 'json',
-            success: data=>{ NewGame(data)}
-        })
+            success: data=>{ newRack(data)}
+        });
       });
-      $("#guess").on("change", function(){
+	  
+	  $("#check").on("click", function()
+      {
         let guess = document.getElementById("guess").value.toUpperCase();
-        let twistedtext = document.getElementById("twistedtext").innerHTML;
+        let rack = document.getElementById("rack").innerHTML;
+        
         $.ajax({
-           method: "GET",
-           url: "api.php?guess=" + guess + "&twistedtext=" + twistedtext,
-           dataType: 'json',
-           success: game=>{ guessWords(game)}
-        })
+            method: "GET",
+            url: "api.php?button=check&guess=" + guess + "&rack="+ rack,
+            dataType: 'json',
+            success: grade=>{ displayCheck(grade)}
+        });
+      });
+	  
     });
   </script>
 </html>
