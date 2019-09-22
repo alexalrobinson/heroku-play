@@ -49,6 +49,7 @@ $(document).ready(function(){
 				let line = star.repeat(word_arr[i].length);
 				hidden = hidden + line + "<br>";
 		}
+	  	document.querySelector("#words").innerHTML = rack["words"];
 		document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
 	
