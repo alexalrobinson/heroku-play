@@ -34,7 +34,7 @@ $(document).ready(function(){
 	 let word_arrLength = 0;
 	 let word_l = 0;
 	  
-	function newRack(rack){
+	function newGame(rack){
 	    //Display new rack
 	    let hidden = "";
 	    score = 0;
@@ -54,12 +54,12 @@ $(document).ready(function(){
 		document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
 	
-	function displayCheck(grade){
+	function guessWords(grade){
 	    //Load new words
 	   let hidden = "";
 	   //if correct word wasnt guessed yet
-	   if(!c_guesses.includes(grade["guess"]) && grade["result"] == "correct"){
-	       c_guesses.push(grade["guess"]);
+	   if(!c_guesses.includes(game["guess"]) && game["result"] == "correct"){
+	       c_guesses.push(game["guess"]);
 	       score++;
 	       //print correct words
 	       for(var i = 0; i < c_guesses.length; i++){
@@ -89,7 +89,7 @@ $(document).ready(function(){
             method: "GET",
             url: "api.php?button=newRack",
             dataType: 'json',
-            success: data=>{ newRack(data)}
+            success: data=>{ newGame(data)}
         });
       });
 	  
@@ -100,7 +100,7 @@ $(document).ready(function(){
             method: "GET",
             url: "api.php?button=check&guess=" + guess + "&rack="+ rack,
             dataType: 'json',
-            success: grade=>{ displayCheck(grade)}
+            success: game=>{ guessWords(game)}
         });
       });
 	  
