@@ -9,7 +9,7 @@
     echo json_encode($results);
   }
   else if($_GET["button"] == "check"){
-    $query = "select * from racks where rack = '" . $_GET["rack"]."'";
+    $query = "select * from racks where rack = '" . $_GET["twistedtext"]."'";
     $statement = $dbhandle->prepare($query);
     $statement->execute();
     $row = $statement->fetch(PDO::FETCH_ASSOC);
