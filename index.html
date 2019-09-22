@@ -54,6 +54,7 @@
         $.ajax({
             method: "GET",
             url: "api.php?button=grabanother",
+            dataType: 'json',
             success: data=>{ NewGame(data)}
         })
       });
@@ -63,6 +64,7 @@
         $.ajax({
            method: "GET",
            url: "api.php?guess=" + guess + "&twistedtext=" + twistedtext,
+           dataType: 'json',
            success: game=>{ guessWords(game)}
         })
     });
