@@ -49,10 +49,10 @@ $(document).ready(function(){
 				let line = star.repeat(word_arr[i].length);
 				hidden = hidden + line + "<br>";
 		}
-	  	document.querySelector("#words").innerHTML = rack["words"];
+	  	document.querySelector("#words").innerHTML = hidden;
 		document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
-	
+
 	function guessWords(rack){
 	    //Load new words
 	   let hidden = "";
