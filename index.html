@@ -50,8 +50,8 @@ $(document).ready(function(){
 				hidden = hidden + line + "<br>";
 		}
 		
-		$("#words").innerHTML = hidden;
-		$("#twistedtext").innerHTML = rack["rack"];
+		document.querySelector("#words").innerHTML = hidden;
+		document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
 	
 	function displayCheck(grade){
@@ -72,7 +72,7 @@ $(document).ready(function(){
 				hidden = hidden + line + "<br>";
 	       }
 		
-	       $("#words").innerHTML = hidden;
+	       document.querySelector("#words").innerHTML = hidden;
 	       
 	       if(score==word_arrLength){
 	           alert("You WIN!");
@@ -94,8 +94,8 @@ $(document).ready(function(){
       });
 	  
       $("#guess").on("change", function(){
-        let guess = $("#guess").value.toUpperCase();
-        let rack = $("#twistedtext").innerHTML;
+        let guess = document.querySelector("#guess").value.toUpperCase();
+        let rack = document.querySelector("#twistedtext").innerHTML;
         $.ajax({
             method: "GET",
             url: "api.php?button=check&guess=" + guess + "&rack="+ rack,
