@@ -43,17 +43,16 @@ $(document).ready(function(){
 	    var word_arr = rack["words"].split("@@");
 	    word_l = word_arr[0].length;
 	    word_arrLength = word_arr.length;
-		for(var i = 0; i < word_arr.length; i++) 
-		{
-				let star = "*";
-				let line = star.repeat(word_arr[i].length);
-				hidden = hidden + line + "<br>";
-		}
-	  	document.querySelector("#words").innerHTML = hidden;
-		document.querySelector("#twistedtext").innerHTML = rack["rack"];
+	    for(var i = 0; i < word_arr.length; i++){
+		let star = "*";
+		let line = star.repeat(word_arr[i].length);
+		hidden = hidden + line + "<br>";
+	    }
+	    document.querySelector("#words").innerHTML = hidden;
+            document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
 
-	function guessWords(rack){
+	function guessWords(game){
 	    //Load new words
 	   let hidden = "";
 	   //if correct word wasnt guessed yet
@@ -99,7 +98,7 @@ $(document).ready(function(){
             method: "GET",
             url: "api.php?button=check&guess=" + guess + "&twistedtext="+ twistedtext,
             dataType: 'json',
-            success: data=>{ guessWords(data)}
+            success: game=>{ guessWords(game)}
         });
       });
 	  
