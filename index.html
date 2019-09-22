@@ -34,7 +34,7 @@
           $("input").toggleClass("hidden");
       });
       
-      let newGame = function(racks){
+      function newGame(racks){
         $("#twistedtext").html('');
         $("#answer").html('');
         $("#grabanother").html('<i class="fas fa-sync"></i>');
@@ -43,7 +43,7 @@
         });
       }
       
-      let guessWords = function(game){
+      function guessWords(game){
         if(!words.includes(game["guess"]) && game["guess"] != NULL){
            words.push(game["guess"]);
            $("#answer").append(`<li>game["guess"]</li>`);
