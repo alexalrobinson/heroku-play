@@ -30,7 +30,7 @@
 $(document).ready(function(){
      
 	 let score = 0;
-     let c_guesses = [];
+         let c_guesses = [];
 	 let word_arrLength = 0;
 	 let word_l = 0;
 	  
@@ -38,7 +38,7 @@ $(document).ready(function(){
 	    //Display new rack
 	    let hidden = "";
 	    score = 0;
-        c_guesses = [];
+            c_guesses = [];
 	    alert(rack["words"]);
 	    var word_arr = rack["words"].split("@@");
 	    word_l = word_arr[0].length;
@@ -49,12 +49,10 @@ $(document).ready(function(){
 				let line = star.repeat(word_arr[i].length);
 				hidden = hidden + line + "<br>";
 		}
-		
-		document.querySelector("#words").innerHTML = hidden;
 		document.querySelector("#twistedtext").innerHTML = rack["rack"];
 	}
 	
-	function guessWords(game){
+	function guessWords(rack){
 	    //Load new words
 	   let hidden = "";
 	   //if correct word wasnt guessed yet
@@ -95,12 +93,12 @@ $(document).ready(function(){
 	  
       $("#guess").on("change", function(){
         let guess = document.querySelector("#guess").value.toUpperCase();
-        let rack = document.querySelector("#twistedtext").innerHTML;
+        let twistedtext = document.querySelector("#twistedtext").innerHTML;
         $.ajax({
             method: "GET",
-            url: "api.php?button=check&guess=" + guess + "&rack="+ rack,
+            url: "api.php?button=check&guess=" + guess + "&twistedtext="+ twistedtext,
             dataType: 'json',
-            success: game=>{ guessWords(game)}
+            success: data=>{ guessWords(data)}
         });
       });
 	  
