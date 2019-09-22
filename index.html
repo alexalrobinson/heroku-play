@@ -12,24 +12,22 @@
     <script src="https://kit.fontawesome.com/327de1ef48.js"></script>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light">
-      <a class="navbar-brand" href="#">Text Twist</a>
-    </nav>
-    <div class = "container">
-      <br>
-      <div class="jumbotron">
-        <h1 class="display-4 text-center"><span id = "twistedtext"></span>&nbsp;<button id="grabanother" type="button" class="btn btn-sm">Start Game!</button></h1>
-        <p class="text-center">Make your guess: <input id="guess"></p>
-      </div>
-        <p id="answer">
-	</p>
-    </div>
+    <button id='newRack'>New Rack</button>
+<br><br>
+Rack: <div id = "rack"></div>
+<br>
+Possible words: <br><div id = "words"></div>
+<br>
+<!-- sanitize this -->
+Guess:<input type = 'text' id = 'guess'></input>
+<button id='check'>Check</button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   </body>
   <script>
-    $(document).ready(function(){
-let score = 0;
+$(document).ready(function(){
+     
+	 let score = 0;
      let c_guesses = [];
 	 let word_arrLength = 0;
 	 let word_l = 0;
@@ -51,7 +49,7 @@ let score = 0;
 				hidden = hidden + line + "<br>";
 		}
 		
-		document.getElementById("answer").innerHTML = hidden;
+		document.getElementById("words").innerHTML = hidden;
 		document.getElementById("rack").innerHTML = rack["rack"];
 	}
 	
@@ -77,7 +75,7 @@ let score = 0;
 				hidden = hidden + line + "<br>";
 		   }
 		
-	       document.getElementById("answer").innerHTML = hidden;
+	       document.getElementById("words").innerHTML = hidden;
 	       
 	       if(score==word_arrLength)
 	       {
@@ -100,10 +98,10 @@ let score = 0;
         });
       });
 	  
-	  $("#guess").on("change", function()
+	  $("#check").on("click", function()
       {
         let guess = document.getElementById("guess").value.toUpperCase();
-        let rack = document.getElementById("twistedtext").innerHTML;
+        let rack = document.getElementById("rack").innerHTML;
         
         $.ajax({
             method: "GET",
