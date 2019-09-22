@@ -103,7 +103,7 @@ $(document).ready(function(){
 	  $("#guess").on("change", function()
       {
         let guess = document.getElementById("guess").value.toUpperCase();
-        let rack = document.getElementById("rack").innerHTML;
+        let rack = document.getElementById("twistedtext").innerHTML;
         
         $.ajax({
             method: "GET",
