@@ -20,7 +20,7 @@ $(document).ready(function(){
     for(var i = 0; i < words.length; i++){
       line = filler.repeat(wordlength);
       currentdisplay[i] = line;
-	    $("#words").append('<li class=\"list-group-item text-center\">'+currentdisplay[i]+'</li>');
+	    $("#words").append('<li class=\"list-group-item text-center bg-dark text-white\">'+currentdisplay[i]+'</li>');
     }
     document.querySelector("#twistedtext").innerHTML = rack["rack"];
   }
@@ -45,7 +45,7 @@ $(document).ready(function(){
 	        currentdisplay[i] = words[i];
 	        $("#words").html('');
 	        for(var i = 0; i < words.length; i++){
-	          $("#words").append('<li class=\"list-group-item text-center\">'+currentdisplay[i]+'</li>');
+	          $("#words").append('<li class=\"list-group-item text-center bg-dark text-white\">'+currentdisplay[i]+'</li>');
 	        }
 	        if (score === words.length){
 	          $("#alert").html('You win!');
