@@ -17,6 +17,8 @@
     </nav>
     <div class="container">
       <br>
+      <div id="alert" class="alert alert-primary" role="alert">
+      </div>
       <div class="jumbotron">
         <h1 class="display-4 text-center"><span id="twistedtext"></span>&nbsp;<button id="newGame" type="button" class="btn btn-sm">Start Game!</button></h1>
 	<p class="text-center">Make your guess:&nbsp;<input type="text" id="guess"></input></p>
@@ -39,6 +41,7 @@
 	 currentdisplay = [];
          words = [];
 	 $("#words").html('');
+	 $("#alert").html('');
          $("#newGame").html('<i class="fas fa-sync"></i>');
          alert(rack["words"]);
          words = rack["words"].split("@@");
@@ -68,16 +71,16 @@
 	      score++;
 	      currentdisplay[i] = words[i];
 	      $("#words").html('');
-	      alert("correct guess");
+	      $("#alert").html('');
 	      for(var i = 0; i < words.length; i++){
 	        $("#words").append('<li class=\"list-group-item text-center\">'+currentdisplay[i]+'</li>');
 	      }
 	      if (score === words.length){
-	       alert("you win!");
+	        $("#alert").append('You win!');
               }
 	    }
 	    else{
-	      alert("Guess again");
+	       $("#alert").append('Incorrect guess!');
             }
           }
 	}
