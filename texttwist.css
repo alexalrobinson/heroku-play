@@ -17,3 +17,7 @@ body {
 .btn:hover {
   color: white;
 }
+
+#guess {
+  background: #FB8950;
+}
