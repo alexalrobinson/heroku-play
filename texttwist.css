@@ -6,3 +6,7 @@ body {
 .navbar-brand {
   color: #FB8950;
 }
+
+ul li {
+  background: black;
+}
