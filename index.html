@@ -66,12 +66,12 @@
       $("#guess").on("change", function(){
         if(score < words.length){
           let guess = document.querySelector("#guess").value.toUpperCase();
+          $("#alert").html('');
           for(var i = 0; i < words.length; i++){
 	    if(guess === words[i] && guess !== currentdisplay[i]){
 	      score++;
 	      currentdisplay[i] = words[i];
 	      $("#words").html('');
-	      $("#alert").html('');
 	      for(var i = 0; i < words.length; i++){
 	        $("#words").append('<li class=\"list-group-item text-center\">'+currentdisplay[i]+'</li>');
 	      }
