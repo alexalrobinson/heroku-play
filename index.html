@@ -32,7 +32,7 @@
       let words = [];
       let currentdisplay = [];
       let wordlength = 0;
-      let star = "*"
+      let filler = "<i class="fas fa-box-open"></i>"
       let line = "";
       function newGame(rack){
          score = 0;
@@ -44,7 +44,7 @@
          words = rack["words"].split("@@");
          wordlength = words[0].length;
          for(var i = 0; i < words.length; i++){
-           line = star.repeat(wordlength);
+           line = filler.repeat(wordlength);
            currentdisplay[i] = line;
 	   $("#words").append('<li>'+currentdisplay[i]+'</li>');
          }
