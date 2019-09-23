@@ -53,7 +53,7 @@
       $("#newGame").on("click", function(){
         $.ajax({
             method: "GET",
-            url: "api.php?button=newGame",
+            url: "api.php",
             dataType: 'json',
             success: data=>{ newGame(data)}
         });
