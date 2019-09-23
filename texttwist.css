@@ -7,6 +7,6 @@ body {
   color: #FB8950;
 }
 
-.list-item {
+ul .list-item {
   background-color: black;
 }
