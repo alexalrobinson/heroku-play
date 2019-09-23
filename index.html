@@ -65,7 +65,7 @@
           for(var i = 0; i < words.length; i++){
 	    if(guess == words[i] && guess != currentdisplay[i]){
 	      score++;
-	      currentdisplay[i] = word[i];
+	      currentdisplay[i] = words[i];
 	      $("#words").html('');
 	      alert("correct guess");
 	      for(var i = 0; i < words.length; i++){
