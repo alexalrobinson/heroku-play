@@ -21,7 +21,7 @@
       </div>
       <div class="jumbotron">
         <h1 class="display-4 text-center"><span id="twistedtext"></span>&nbsp;<button id="newGame" type="button" class="btn btn-sm">Start Game!</button></h1>
-	<p class="text-center">Make your guess:&nbsp;</p>
+	<p class="text-center">Make your guess:&nbsp;<span id="guesshere"></span></p>
       </div>
       <ul class="list-group" id = "words"></ul>
     </div>
@@ -42,7 +42,7 @@
          words = [];
 	 $("#words").html('');
 	 $("#alert").html('');
-	 $("p").append('<input type=\"text\" id=\"guess\"></input>');
+	 $("#guesshere").html('<input type=\"text\" id=\"guess\"></input>');
          $("#newGame").html('<i class="fas fa-sync"></i>');
          //alert(rack["words"]);
          words = rack["words"].split("@@");
