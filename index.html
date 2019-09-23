@@ -79,12 +79,12 @@
 	        $("#words").append('<li class=\"list-group-item text-center\">'+currentdisplay[i]+'</li>');
 	      }
 	      if (score === words.length){
-	        $("#alert").append('You win!');
+	        $("#alert").html('You win!');
 		document.querySelector("#alert").classList.remove("d-none");
               }
 	    }
 	    else{
-	       $("#alert").append('Incorrect guess!');
+	       $("#alert").html('Incorrect guess!');
 	       document.querySelector("#alert").classList.remove("d-none");
             }
           }
