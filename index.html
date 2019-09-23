@@ -60,7 +60,7 @@
       });
 	  
       $("#guess").on("change", function(){
-        while(score < words.length){
+        if(score < words.length){
           let guess = document.querySelector("#guess").value.toUpperCase();
           for(var i = 0; i < words.length; i++){
 	    if(guess === words[i] && guess !== currentdisplay[i]){
