@@ -63,7 +63,7 @@
         if(score < words.length){
           let guess = document.querySelector("#guess").value.toUpperCase();
           for(var i = 0; i < words.length; i++){
-	    if(guess == words[i] && guess != currentdisplay[i]){
+	    if(guess === words[i] && guess !== currentdisplay[i]){
 	      score++;
 	      currentdisplay[i] = words[i];
 	      $("#words").html('');
