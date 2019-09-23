@@ -1,5 +1,4 @@
 body {
-  color: white;
   background: #FB8950;
 }
 
@@ -7,6 +6,6 @@ body {
   color: #FB8950;
 }
 
-#answer .list-item {
-  background-color: black;
+.jumbotron {
+  color: white;
 }
