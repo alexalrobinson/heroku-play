@@ -13,3 +13,7 @@ body {
 .btn {
   color: #FB8950;
 }
+
+.btn:hover {
+  color: white;
+}
